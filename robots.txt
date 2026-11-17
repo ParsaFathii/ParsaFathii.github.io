@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://parsafathii.github.io/sitemap.xml

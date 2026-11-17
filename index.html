@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parsa Fathi — Software Developer</title>
+  <meta name="description" content="Portfolio of Parsa Fathi — software developer building systems that run in the real world: SPERLUS, an industrial pipeline-inspection platform in production use, plus distributed backends and computer-vision pipelines. Python · TypeScript · Go · C++.">
+  <meta name="author" content="Parsa Fathi">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#F3F0E7">
+  <link rel="canonical" href="https://parsafathii.github.io/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Parsa Fathi — Software Developer">
+  <meta property="og:title" content="Parsa Fathi — Software Developer">
+  <meta property="og:description" content="Systems that run in the real world: an industrial pipeline-inspection platform, distributed backends, computer-vision pipelines. Python · TypeScript · Go · C++.">
+  <meta property="og:url" content="https://parsafathii.github.io/">
+  <meta property="og:image" content="https://parsafathii.github.io/assets/img/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Parsa Fathi — Software Developer. Field-survey portfolio cover.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Parsa Fathi — Software Developer">
+  <meta name="twitter:description" content="Systems that run in the real world: industrial inspection software, distributed backends, computer vision.">
+  <meta name="twitter:image" content="https://parsafathii.github.io/assets/img/og-cover.png">
+
+  <!-- Icons -->
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preload" href="assets/fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/plexmono-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Parsa Fathi",
+    "jobTitle": "Software Developer",
+    "url": "https://parsafathii.github.io/",
+    "sameAs": [
+      "https://github.com/ParsaFathii",
+      "https://www.linkedin.com/in/parsafathi"
+    ],
+    "address": { "@type": "PostalAddress", "addressLocality": "Mashhad", "addressCountry": "IR" },
+    "knowsAbout": [
+      "Software Engineering", "Python", "TypeScript", "Go", "C++", "Computer Vision",
+      "Distributed Systems", "Desktop Application Development", "FastAPI", "Next.js"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Intro overlay (only when JS is available) -->
+  <div class="preloader" aria-hidden="true">
+    <div class="pre-inner">
+      <p class="mono pre-label">ESTABLISHING SURVEY GRID</p>
+      <p class="pre-count mono" id="preCount">000</p>
+      <div class="pre-bar"><span id="preBar"></span></div>
+    </div>
+  </div>
+
+  <!-- Crosshair survey cursor (desktop, fine pointers only) -->
+  <div class="crosshair" aria-hidden="true">
+    <span class="ch-x"></span><span class="ch-y"></span>
+    <span class="ch-read mono" id="chRead">E 0000 · N 0000</span>
+  </div>
+
+  <header class="site-head" id="siteHead">
+    <div class="head-inner">
+      <a class="brand mono" href="#top">P·FATHI <span class="brand-sub">FIELD SURVEY</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="mono">
+          <li><a href="#about" data-nav="about"><i>01</i>Operator</a></li>
+          <li><a href="#sperlus" data-nav="sperlus"><i>02</i>Sperlus</a></li>
+          <li><a href="#systems" data-nav="systems"><i>03</i>Systems</a></li>
+          <li><a href="#vision" data-nav="vision"><i>04</i>Vision</a></li>
+          <li><a href="#stack" data-nav="stack"><i>05</i>Stack</a></li>
+          <li><a href="#records" data-nav="records"><i>06</i>Records</a></li>
+        </ul>
+        <a class="btn btn-mini mono" href="#contact" data-nav="contact">07 · Transmit</a>
+      </nav>
+      <button class="nav-toggle mono" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span class="nt-lines"><span></span><span></span></span>
+        <span class="nt-text">MENU</span>
+      </button>
+      <p class="survey-read mono" aria-hidden="true">SURVEY <span id="surveyPct">000</span>%</p>
+    </div>
+    <div class="head-progress" aria-hidden="true"><span id="headProgress"></span></div>
+  </header>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <nav aria-label="Mobile">
+      <ul>
+        <li><a href="#about" class="mm-link"><i class="mono">01</i>The Operator</a></li>
+        <li><a href="#sperlus" class="mm-link"><i class="mono">02</i>SPERLUS — Flagship</a></li>
+        <li><a href="#systems" class="mm-link"><i class="mono">03</i>Selected Systems</a></li>
+        <li><a href="#vision" class="mm-link"><i class="mono">04</i>Vision &amp; Research</a></li>
+        <li><a href="#stack" class="mm-link"><i class="mono">05</i>Capability Chart</a></li>
+        <li><a href="#records" class="mm-link"><i class="mono">06</i>Site Records</a></li>
+        <li><a href="#contact" class="mm-link"><i class="mono">07</i>Transmit</a></li>
+      </ul>
+      <div class="mm-foot mono">
+        <span>MASHHAD · IRAN</span>
+        <a href="https://github.com/ParsaFathii" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+      </div>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <!-- ================= STATION 00 · HERO ================= -->
+    <section class="hero" id="top" aria-label="Introduction">
+      <svg class="hero-net" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g class="net-lines">
+          <path pathLength="1" d="M-20 560 H320 L430 450 H700 L810 560 H1150 L1260 450 H1460" />
+          <path pathLength="1" d="M180 760 V560" />
+          <path pathLength="1" d="M430 450 V240 H700" />
+          <path pathLength="1" d="M700 450 V180 L830 60 H1180" />
+          <path pathLength="1" d="M980 760 V560 L1090 450 H1260" />
+          <path pathLength="1" d="M560 240 L640 160 H830" />
+          <path pathLength="1" class="route" d="M-20 660 H520 L640 540 H1010 L1120 650 H1460" />
+          <path pathLength="1" d="M1180 60 L1300 180 V450" />
+        </g>
+        <g class="net-nodes">
+          <circle cx="320" cy="560" r="7"/><circle cx="430" cy="450" r="7"/>
+          <circle cx="700" cy="450" r="7"/><circle cx="810" cy="560" r="7"/>
+          <circle cx="430" cy="240" r="7"/><circle cx="700" cy="180" r="7"/>
+          <circle cx="830" cy="60" r="7"/><circle cx="1180" cy="60" r="7"/>
+          <circle cx="980" cy="560" r="7"/><circle cx="1090" cy="450" r="7"/>
+          <circle cx="640" cy="160" r="7"/><circle cx="1300" cy="180" r="7"/>
+          <circle cx="520" cy="660" r="6" class="alt"/><circle cx="1010" cy="540" r="6" class="alt"/>
+          <circle cx="1120" cy="650" r="6" class="alt"/><circle cx="640" cy="540" r="6" class="alt"/>
+        </g>
+      </svg>
+
+      <div class="container hero-inner">
+        <div class="hero-meta mono" data-reveal>
+          <span>FIELD SURVEY — PORTFOLIO</span>
+          <span class="hm-mid">MASHHAD · IRAN</span>
+          <span>REV 2026.11</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="line"><span class="line-in">PARSA</span></span>
+          <span class="line"><span class="line-in">FATHI<b class="tick">.</b></span></span>
+        </h1>
+
+        <div class="hero-grid">
+          <p class="hero-lede" data-reveal>
+            Software developer engineering systems that run in the physical world —
+            an industrial pipeline-inspection platform used in the field,
+            distributed backends, and computer-vision pipelines.
+          </p>
+          <ul class="hero-specs mono" data-reveal>
+            <li><span class="k">STACK</span><span class="v">Python · TypeScript · Go · C++ · Java</span></li>
+            <li><span class="k">FOCUS</span><span class="v">Industrial software · Distributed systems · Computer vision</span></li>
+            <li><span class="k">FLAGSHIP</span><span class="v">SPERLUS — desktop 15.14 / service 1.3.6</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-cta" data-reveal>
+          <a class="btn btn-primary magnetic" href="#sperlus">Begin the survey
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v10M2.5 7.5 7 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
+          <a class="btn btn-ghost magnetic" href="https://github.com/ParsaFathii" target="_blank" rel="noopener noreferrer">GitHub
+            <svg width="13" height="13" viewBox="0 0 13 13" aria-hidden="true"><path d="M3 10 10 3M4 3h6v6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-foot mono container" data-reveal>
+        <span>SCROLL — STATION 01</span>
+        <span class="scroll-line" aria-hidden="true"></span>
+        <span>N36.2972 · E59.6067</span>
+      </div>
+    </section>
+
+    <!-- ================= STATION 01 · ABOUT ================= -->
+    <section class="station about" id="about" aria-labelledby="about-title">
+      <div class="ghost-no" aria-hidden="true">01</div>
+      <div class="container">
+        <header class="station-head" data-reveal>
+          <div class="station-meta mono">
+            <span class="station-no">STATION 01</span>
+            <span class="station-rule" aria-hidden="true"></span>
+            <span class="station-label">THE OPERATOR</span>
+            <span class="station-side">PROFILE</span>
+          </div>
+          <h2 class="station-title" id="about-title">
+            <span class="line"><span class="line-in">Software that survives</span></span>
+            <span class="line"><span class="line-in">contact with reality.</span></span>
+          </h2>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-lede" data-reveal>
+            <p class="big-line">I build software that has to work when it is raining, offline, and three metres underground.</p>
+          </div>
+          <div class="about-body" data-reveal>
+            <p>My main work is <strong>SPERLUS</strong> — a sewer-inspection operations platform I designed and develop end to end: a field desktop program for CCTV pipe inspection, a role-based web control center, and the backend service that keeps them in sync. It is delivered to a real client, deployed on production infrastructure, and has been iterated through dozens of client-driven releases — the desktop software is currently at version 15.14.</p>
+            <p>Before and alongside that, my background is in <strong>automotive electrical systems and ECU programming</strong>, which is where the interest in low-level, deterministic, fail-safe software comes from. That thread runs through everything: CAN-bus tooling, a real-time scheduling laboratory, C++ engines with zero-warning policies.</p>
+            <p>I care about <strong>honest engineering</strong>: every number an interface shows comes from real data, synthetic data is labelled as synthetic, tests are deterministic, and each public repository documents its own limitations. The work is meant to be inspected — like everything else on this survey.</p>
+          </div>
+        </div>
+
+        <ul class="principles" data-reveal>
+          <li class="principle">
+            <span class="mono p-no">P-01</span>
+            <h3>Determinism first</h3>
+            <p>Same input, same result — every time. From discrete-event simulation to field sync, reproducibility is a feature, not an afterthought.</p>
+          </li>
+          <li class="principle">
+            <span class="mono p-no">P-02</span>
+            <h3>Evidence over claims</h3>
+            <p>No metric without a source, no screenshot of a system that does not run. Benchmarks keep their raw observations and their caveats.</p>
+          </li>
+          <li class="principle">
+            <span class="mono p-no">P-03</span>
+            <h3>Field-grade reliability</h3>
+            <p>Offline queues, resumable chunked uploads, idempotent retries, verified self-updates. The field has no patience for "try again later".</p>
+          </li>
+          <li class="principle">
+            <span class="mono p-no">P-04</span>
+            <h3>Document like a survey</h3>
+            <p>Bilingual docs (EN/FA), architecture specs written before code, CI on every public repo, and limitations stated in plain text.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= STATION 02 · SPERLUS ================= -->
+    <section class="station sperlus" id="sperlus" aria-labelledby="sperlus-title">
+      <div class="ghost-no" aria-hidden="true">02</div>
+      <div class="container">
+        <header class="station-head" data-reveal>
+          <div class="station-meta mono">
+            <span class="station-no">STATION 02</span>
+            <span class="station-rule" aria-hidden="true"></span>
+            <span class="station-label">FLAGSHIP OPERATION</span>
+            <span class="station-side">CASE STUDY</span>
+          </div>
+          <h2 class="station-title" id="sperlus-title">
+            <span class="line"><span class="line-in">SPERLUS</span></span>
+          </h2>
+          <p class="station-sub">An industrial sewer-inspection and operations-management platform —
+          desktop field software, a web control center and a central service,
+          built for a real client and running in production.</p>
+        </header>
+
+        <div class="sperlus-problem" data-reveal>
+          <div class="sp-label mono">THE SURVEY PROBLEM</div>
+          <p>Sewer networks are inspected by dragging CCTV cameras from manhole to manhole. Every defect must be coded to standard (WRC / EN), measured by distance down the pipe, compiled into reports, and then managed as contracts, work orders, teams and invoices. Field crews work underground and offline; the office needs live control. Most toolchains handle one slice of that — SPERLUS integrates the whole operation.</p>
+        </div>
+
+        <figure class="arch-figure" data-reveal>
+          <figcaption class="mono fig-cap">FIG. 02-A — SYSTEM ARCHITECTURE (SELF-DRAWING)</figcaption>
+          <svg class="arch" viewBox="0 0 980 470" role="img" aria-labelledby="archTitle">
+            <title id="archTitle">SPERLUS architecture: the VideoMetry desktop field unit and the Next.js web control center both talk to a central FastAPI service, which persists to PostgreSQL and a media store.</title>
+            <g class="arch-lines">
+              <path pathLength="1" d="M290 215 H390" class="sync"/>
+              <path pathLength="1" d="M690 215 H590" class="rest"/>
+              <path pathLength="1" d="M470 315 V380"/>
+              <path pathLength="1" d="M510 315 V380"/>
+            </g>
+            <g class="arch-labels mono">
+              <text x="340" y="185" text-anchor="middle">IDEMPOTENT SYNC</text>
+              <text x="340" y="250" text-anchor="middle">CHUNKED MEDIA</text>
+              <text x="640" y="195" text-anchor="middle">REST · WS</text>
+              <text x="470" y="355" text-anchor="end">SQL · ALEMBIC</text>
+              <text x="512" y="355" text-anchor="start">FS / S3-READY</text>
+            </g>
+            <g class="arch-boxes">
+              <g class="abox">
+                <path pathLength="1" d="M40 130h250v170H40Z"/>
+                <text x="62" y="165" class="ab-title">FIELD UNIT</text>
+                <text x="62" y="188" class="ab-sub">VideoMetry 15.14</text>
+                <text x="62" y="212" class="ab-line">PySide6 · offline-first</text>
+                <text x="62" y="232" class="ab-line">recording · dual-rod</text>
+                <text x="62" y="252" class="ab-line">measurement · defect</text>
+                <text x="62" y="272" class="ab-line">logging · WRC/EN PDF</text>
+              </g>
+              <g class="abox">
+                <path pathLength="1" d="M390 105h200v210H390Z"/>
+                <text x="412" y="140" class="ab-title">CORE SERVICE</text>
+                <text x="412" y="163" class="ab-sub">SPERLUS API 1.3.6</text>
+                <text x="412" y="187" class="ab-line">FastAPI · modular</text>
+                <text x="412" y="207" class="ab-line">monolith — auth,</text>
+                <text x="412" y="227" class="ab-line">RBAC scopes, sync,</text>
+                <text x="412" y="247" class="ab-line">media, finance,</text>
+                <text x="412" y="267" class="ab-line">audit · 11 modules</text>
+              </g>
+              <g class="abox">
+                <path pathLength="1" d="M690 130h250v170H690Z"/>
+                <text x="712" y="165" class="ab-title">CONTROL CENTER</text>
+                <text x="712" y="188" class="ab-sub">SPERLUS Web 1.3.6</text>
+                <text x="712" y="212" class="ab-line">Next.js 16 · Persian RTL</text>
+                <text x="712" y="232" class="ab-line">contracts · work orders ·</text>
+                <text x="712" y="252" class="ab-line">videometry catalog ·</text>
+                <text x="712" y="272" class="ab-line">finance · audit</text>
+              </g>
+              <g class="abox small">
+                <path pathLength="1" d="M400 380h140v56H400Z"/>
+                <text x="470" y="405" text-anchor="middle" class="ab-db">POSTGRESQL 16</text>
+                <text x="470" y="423" text-anchor="middle" class="ab-line">SQLite in dev</text>
+              </g>
+              <g class="abox small">
+                <path pathLength="1" d="M570 380h140v56H570Z"/>
+                <text x="640" y="405" text-anchor="middle" class="ab-db">MEDIA STORE</text>
+                <text x="640" y="423" text-anchor="middle" class="ab-line">chunked · verified</text>
+              </g>
+            </g>
+          </svg>
+        </figure>
+
+        <div class="sperlus-cols">
+          <article class="sp-card" data-reveal>
+            <span class="mono sp-tag">FIELD UNIT</span>
+            <h3>VideoMetry — the inspector's cockpit</h3>
+            <p>A PySide6 desktop application for camera capture and inspection recording. Defects are logged on a timeline with a catalogue of 45+ standard codes, positioned by dual-rod distance measurement, and compiled into standards-compliant PDF reports with charts and pipe views.</p>
+            <ul class="mono sp-facts">
+              <li>OFFLINE-FIRST — local commit, background upload</li>
+              <li>SELF-UPDATE — packages verified with SHA-256</li>
+              <li>15.8 → 15.14 SERVED FOR AUTO-UPDATE</li>
+            </ul>
+          </article>
+          <article class="sp-card" data-reveal>
+            <span class="mono sp-tag">CONTROL CENTER</span>
+            <h3>SPERLUS Web — the office view</h3>
+            <p>A Persian RTL Next.js 16 application: a cinematic public product site plus a role-based panel for contracts with document attachments, work orders with GIS fields, a structured videometry catalog, organizational structure, financial workflow, and a full audit trail.</p>
+            <ul class="mono sp-facts">
+              <li>NAV BUILT FROM REAL PERMISSIONS</li>
+              <li>EVERY ACTION ENFORCED SERVER-SIDE</li>
+              <li>EXPORTS — EXCEL · PDF · POWERPOINT</li>
+            </ul>
+          </article>
+          <article class="sp-card" data-reveal>
+            <span class="mono sp-tag">CORE SERVICE</span>
+            <h3>SPERLUS API — the spine</h3>
+            <p>A FastAPI modular monolith: JWT auth with Argon2id hashing, role-and-scope access control, idempotent field sync, chunked resumable media upload, optimistic concurrency, an append-only audit log, and a payment-request-to-approval financial module.</p>
+            <ul class="mono sp-facts">
+              <li>RBAC — ROLE + PERMISSION + SCOPE TREE</li>
+              <li>32-SCENARIO FINANCE VERIFICATION SUITE</li>
+              <li>POSTGRESQL PROD · SQLITE DEV · ALEMBIC</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="decisions" data-reveal>
+          <div class="dec-head mono">ENGINEERING DECISIONS — RECORDED</div>
+          <ol class="dec-list">
+            <li>
+              <span class="mono d-no">D-01</span>
+              <div><h3>Modular monolith, not microservices</h3>
+              <p>One deployable service with hard module boundaries (11 modules, layered router → service → repository). A two-person operation should not operate a distributed system before it needs one.</p></div>
+            </li>
+            <li>
+              <span class="mono d-no">D-02</span>
+              <div><h3>Offline-first, idempotent sync</h3>
+              <p>The field app commits locally first, then uploads with client-UUID idempotency keys; retries never duplicate a record. Media uploads in resumable 1&nbsp;MB chunks with checksums; conflicts surface as an explicit state in the UI.</p></div>
+            </li>
+            <li>
+              <span class="mono d-no">D-03</span>
+              <div><h3>Access control as data, not code</h3>
+              <p>Permissions are atomic and database-managed; roles are sets of permissions; scope is a hierarchy (company → region → contract → project → work order). Explicit DENY overrides GRANT, and every grant and denial is audited.</p></div>
+            </li>
+            <li>
+              <span class="mono d-no">D-04</span>
+              <div><h3>Design before build</h3>
+              <p>The target architecture — stack, schema, state machines, API surface, mandatory test matrix — was written as a specification document before implementation, and the build followed it section by section.</p></div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="sp-stack" data-reveal>
+          <div class="mono sp-stack-label">RECORDED STACK</div>
+          <ul class="mono chips">
+            <li>Python</li><li>FastAPI</li><li>SQLAlchemy 2</li><li>Alembic</li><li>PostgreSQL</li>
+            <li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>Tailwind 4</li><li>PySide6</li>
+            <li>Docker</li><li>Caddy</li><li>JWT · Argon2id</li>
+          </ul>
+          <p class="mono sp-note">CONFIDENTIALITY — this case study is architecture-level by design: client identity and inspection data stay off the record. Versions and capabilities are verifiable in repository history.</p>
+        </div>
+      </div>
+    </section>
+    <!-- ================= STATION 03 · SYSTEMS ================= -->
+    <section class="station systems" id="systems" aria-labelledby="systems-title">
+      <div class="ghost-no" aria-hidden="true">03</div>
+      <div class="container">
+        <header class="station-head" data-reveal>
+          <div class="station-meta mono">
+            <span class="station-no">STATION 03</span>
+            <span class="station-rule" aria-hidden="true"></span>
+            <span class="station-label">SELECTED SYSTEMS</span>
+            <span class="station-side">PUBLIC WORK</span>
+          </div>
+          <h2 class="station-title" id="systems-title">
+            <span class="line"><span class="line-in">Four systems,</span></span>
+            <span class="line"><span class="line-in">built to be inspected.</span></span>
+          </h2>
+          <p class="station-sub">Open-source platforms, each a real running system with CI, bilingual
+          documentation (EN/FA) and stated limitations. Every screenshot below is captured from the
+          running software — nothing is mocked up.</p>
+        </header>
+
+        <article class="feature" id="s-01" data-reveal>
+          <div class="feature-media">
+            <figure class="shot shot-main">
+              <img src="assets/img/streamguard-overview.webp" width="1400" height="788" loading="lazy" decoding="async" alt="StreamGuard console overview: live event stream, detection rules and incident queue fed by real data.">
+            </figure>
+            <figure class="shot shot-sub">
+              <img src="assets/img/streamguard-incident.webp" width="1400" height="788" loading="lazy" decoding="async" alt="StreamGuard incident investigation view with evidence timeline and notes.">
+            </figure>
+            <span class="mono shot-cap">FIG. 03-1 · LIVE CONSOLE — REAL DATA</span>
+          </div>
+          <div class="feature-body">
+            <div class="feature-no mono">S-01</div>
+            <h3>StreamGuard</h3>
+            <p class="feature-tag">Real-time event processing &amp; security analytics</p>
+            <p class="feature-desc">A Go ingestor validates and normalizes event streams, applies deterministic detection rules, and correlates related detections into investigateable incidents. A Python analytics sidecar adds EWMA baselines and Isolation-Forest anomaly detection; an optional local-LLM assistant investigates strictly from recorded evidence.</p>
+            <ul class="feature-points">
+              <li>Strict validation — rejects are recorded, never silently dropped; duplicates acknowledged idempotently</li>
+              <li>Incident lifecycle with correlation, evidence timelines and audit trail</li>
+              <li>Fully functional with every AI component switched off</li>
+            </ul>
+            <ul class="stack-tags mono" aria-label="Technologies">
+              <li>Go 1.23</li><li>Python 3.12</li><li>PostgreSQL 16</li><li>TypeScript</li><li>Docker</li>
+            </ul>
+            <a class="record-link mono" href="https://github.com/ParsaFathii/StreamGuard" target="_blank" rel="noopener noreferrer">REPOSITORY
+              <svg width="12" height="12" viewBox="0 0 13 13" aria-hidden="true"><path d="M3 10 10 3M4 3h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="feature feature-flip" id="s-02" data-reveal>
+          <div class="feature-media">
+            <figure class="shot shot-main">
+              <img src="assets/img/taskmesh-operations.webp" width="1400" height="875" loading="lazy" decoding="async" alt="TaskMesh operations dashboard: queue lanes, worker fleet and a live event ticker.">
+            </figure>
+            <figure class="shot shot-sub">
+              <img src="assets/img/taskmesh-job-detail.webp" width="1400" height="875" loading="lazy" decoding="async" alt="TaskMesh job detail: timeline, attempts and a live log console streaming over WebSocket.">
+            </figure>
+            <span class="mono shot-cap">FIG. 03-2 · OPERATIONS — LIVE API DATA</span>
+          </div>
+          <div class="feature-body">
+            <div class="feature-no mono">S-02</div>
+            <h3>TaskMesh</h3>
+            <p class="feature-tag">Distributed job processing &amp; worker orchestration</p>
+            <p class="feature-desc">A job-processing platform where a Java 21 / Spring Boot API, independently scalable Python workers, a React operations console and a native Android client all speak one REST + WebSocket contract over PostgreSQL-as-queue.</p>
+            <ul class="feature-points">
+              <li>Reliability mechanisms: retry, idempotency, timeout, cancellation, priority</li>
+              <li>Everything the UI shows is live API data — no mock numbers, no fake timers</li>
+              <li>Four languages, one contract, one CI/CD pipeline with releases</li>
+            </ul>
+            <ul class="stack-tags mono" aria-label="Technologies">
+              <li>Java 21</li><li>Spring Boot</li><li>Python 3.12</li><li>React 18</li><li>Kotlin</li>
+            </ul>
+            <a class="record-link mono" href="https://github.com/ParsaFathii/TaskMesh" target="_blank" rel="noopener noreferrer">REPOSITORY
+              <svg width="12" height="12" viewBox="0 0 13 13" aria-hidden="true"><path d="M3 10 10 3M4 3h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="feature" id="s-03" data-reveal>
+          <div class="feature-media">
+            <figure class="shot shot-main">
+              <img src="assets/img/bytevault-vault.webp" width="1400" height="875" loading="lazy" decoding="async" alt="ByteVault vault overview: search, categories and one-tap copy, with synthetic demo entries.">
+            </figure>
+            <figure class="shot shot-sub">
+              <img src="assets/img/bytevault-unlock.webp" width="1400" height="875" loading="lazy" decoding="async" alt="ByteVault unlock screen.">
+            </figure>
+            <span class="mono shot-cap">FIG. 03-3 · ONE CORE, FOUR CLIENTS</span>
+          </div>
+          <div class="feature-body">
+            <div class="feature-no mono">S-03</div>
+            <h3>ByteVault</h3>
+            <p class="feature-tag">Local-first encrypted password &amp; secrets manager</p>
+            <p class="feature-desc">No account, no cloud, no telemetry. A single C++20 core implements the vault format — Argon2id key derivation, XChaCha20-Poly1305 encryption through libsodium — and four clients (Flutter desktop, Android, Python CLI, loopback web) bind to that same core through one C ABI.</p>
+            <ul class="feature-points">
+              <li>Deterministic security audit: weak, reused and stale passwords, each with a stable finding code</li>
+              <li>Encrypted standalone backups that validate fully before touching anything</li>
+              <li>Android build declares no INTERNET permission at all</li>
+            </ul>
+            <ul class="stack-tags mono" aria-label="Technologies">
+              <li>C++20</li><li>libsodium</li><li>Flutter</li><li>Kotlin</li><li>Python</li>
+            </ul>
+            <a class="record-link mono" href="https://github.com/ParsaFathii/ByteVault" target="_blank" rel="noopener noreferrer">REPOSITORY
+              <svg width="12" height="12" viewBox="0 0 13 13" aria-hidden="true"><path d="M3 10 10 3M4 3h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="feature feature-flip" id="s-04" data-reveal>
+          <div class="feature-media">
+            <figure class="shot shot-main">
+              <img src="assets/img/devicehub-overview.webp" width="1400" height="875" loading="lazy" decoding="async" alt="DeviceHub fleet overview: KPIs, live charts and fleet health, fed by clearly-labelled simulator data.">
+            </figure>
+            <span class="mono shot-cap">FIG. 03-4 · EDGE-TO-CLOUD, FAILURE-INJECTED</span>
+          </div>
+          <div class="feature-body">
+            <div class="feature-no mono">S-04</div>
+            <h3>DeviceHub</h3>
+            <p class="feature-tag">IoT device management, edge gateway &amp; telemetry analytics</p>
+            <p class="feature-desc">Devices publish over real MQTT (QoS 1) to an internal broker. An edge gateway validates every message, deduplicates, buffers to a durable SQLite spool that survives crashes, and runs automation rules at the edge. A Next.js backend enforces role-based access; a FastAPI service runs anomaly detection.</p>
+            <ul class="feature-points">
+              <li>Verified under failure injection: backend outages, kill -9 with a full spool, duplicate deliveries, broker restarts</li>
+              <li>AI diagnostics are advisory-only and act only after explicit human confirmation</li>
+              <li>Six services, one repository, every simulator labelled as simulator</li>
+            </ul>
+            <ul class="stack-tags mono" aria-label="Technologies">
+              <li>TypeScript</li><li>MQTT</li><li>Python</li><li>FastAPI</li><li>scikit-learn</li>
+            </ul>
+            <a class="record-link mono" href="https://github.com/ParsaFathii/DeviceHub" target="_blank" rel="noopener noreferrer">REPOSITORY
+              <svg width="12" height="12" viewBox="0 0 13 13" aria-hidden="true"><path d="M3 10 10 3M4 3h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <div class="records-index" data-reveal>
+          <div class="dec-head mono">ADDITIONAL RECORDS — INDEXED</div>
+          <ul class="ri-list">
+            <li>
+              <span class="mono ri-no">R-03</span>
+              <div class="ri-main">
+                <h3><a href="https://github.com/ParsaFathii/MeshSync" target="_blank" rel="noopener noreferrer">MeshSync</a></h3>
+                <p>Peer-to-peer LAN file synchronisation — Go agents, Ed25519 peer identity, TLS 1.3, a sync planner that classifies every change before it moves, web console and Flutter client.</p>
+              </div>
+              <span class="mono ri-stack">GO · SQLITE · TS · FLUTTER</span>
+            </li>
+            <li>
+              <span class="mono ri-no">R-04</span>
+              <div class="ri-main">
+                <h3><a href="https://github.com/ParsaFathii/EdgeVision" target="_blank" rel="noopener noreferrer">EdgeVision</a></h3>
+                <p>Real-time video analytics on one machine — a C++20 engine process per stream, IoU tracking, geometric events, single-writer SQLite, Persian RTL dashboard. The detector slot is ONNX-ready.</p>
+              </div>
+              <span class="mono ri-stack">C++20 · BUN · NEXT.JS</span>
+            </li>
+            <li>
+              <span class="mono ri-no">R-05</span>
+              <div class="ri-main">
+                <h3><a href="https://github.com/ParsaFathii/MICRORT-LAB" target="_blank" rel="noopener noreferrer">MICRORT-LAB</a></h3>
+                <p>Deterministic RTOS scheduling laboratory — C++20 discrete-event engine, Gantt traces, deadlock detection and memory-allocator statistics from JSON workloads; same config and seed, byte-identical result.</p>
+              </div>
+              <span class="mono ri-stack">C++20 · PYTHON · TS</span>
+            </li>
+            <li>
+              <span class="mono ri-no">R-06</span>
+              <div class="ri-main">
+                <h3><a href="https://github.com/ParsaFathii/CodeBench" target="_blank" rel="noopener noreferrer">CodeBench</a></h3>
+                <p>Cross-language algorithm benchmarking — bit-identical inputs across C++, Java and Python, measured by Google Benchmark, JMH and pyperf, with raw observations retained and outliers kept and flagged.</p>
+              </div>
+              <span class="mono ri-stack">C++ · JAVA · PYTHON · TS</span>
+            </li>
+            <li>
+              <span class="mono ri-no">R-07</span>
+              <div class="ri-main">
+                <h3>License-plate recognition pipeline</h3>
+                <p>Iranian plates read classically, end to end: candidate detection, perspective rectification, contour segmentation with grammar-constrained template OCR, and tracking across video — with benchmark numbers and their caveats published honestly.</p>
+              </div>
+              <span class="mono ri-stack">PYTHON · OPENCV · PRIVATE</span>
+            </li>
+            <li>
+              <span class="mono ri-no">R-08</span>
+              <div class="ri-main">
+                <h3>CAN-bus laboratory</h3>
+                <p>Virtual ECUs on virtual buses with deterministic traffic, DBC-style signal decoding, session recording and replay, and UDS-style diagnostics — a C11 protocol layer under a C++20 engine with web, Flutter and Android clients.</p>
+              </div>
+              <span class="mono ri-stack">C11 · C++20 · PRIVATE</span>
+            </li>
+          </ul>
+          <p class="mono ri-note">R-07 / R-08 — PRIVATE CODEBASES · SANITISED ENTRIES · DETAILS ON REQUEST</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MARQUEE ================= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track mono">
+        <span>PYTHON · TYPESCRIPT · GO · C++20 · JAVA · KOTLIN · FASTAPI · SPRING BOOT · NEXT.JS 16 · REACT 19 · PY SIDE6 · OPENCV · SCIKIT-LEARN · POSTGRESQL · SQLITE · MQTT · WEBSOCKET · DOCKER · GITHUB ACTIONS ·&nbsp;</span>
+        <span>PYTHON · TYPESCRIPT · GO · C++20 · JAVA · KOTLIN · FASTAPI · SPRING BOOT · NEXT.JS 16 · REACT 19 · PY SIDE6 · OPENCV · SCIKIT-LEARN · POSTGRESQL · SQLITE · MQTT · WEBSOCKET · DOCKER · GITHUB ACTIONS ·&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- ================= STATION 04 · VISION ================= -->
+    <section class="station vision" id="vision" aria-labelledby="vision-title">
+      <div class="ghost-no" aria-hidden="true">04</div>
+      <div class="container">
+        <header class="station-head" data-reveal>
+          <div class="station-meta mono">
+            <span class="station-no">STATION 04</span>
+            <span class="station-rule" aria-hidden="true"></span>
+            <span class="station-label">VISION &amp; RESEARCH</span>
+            <span class="station-side">AI · CV</span>
+          </div>
+          <h2 class="station-title" id="vision-title">
+            <span class="line"><span class="line-in">Machine vision,</span></span>
+            <span class="line"><span class="line-in">measured honestly.</span></span>
+          </h2>
+        </header>
+
+        <div class="vision-grid">
+          <div class="vision-main" data-reveal>
+            <p>My computer-vision work is classical first: a full <strong>license-plate recognition pipeline</strong> for Iranian plates — detection, perspective rectification, contour segmentation, grammar-constrained template OCR, tracking — built with OpenCV and benchmarked with its caveats stated in writing. At the other end, <strong>EdgeVision</strong> is a real-time analytics platform where a C++20 engine tracks objects and raises geometric events, and where swapping the built-in detector for an ONNX model is an architecture slot, not a rewrite.</p>
+            <p>Where machine learning appears in my systems, it earns its place narrowly: <strong>Isolation-Forest and EWMA baselines</strong> for anomaly detection, evaluated on labelled datasets and reproducible runs — not bolted-on magic.</p>
+            <p class="vision-claim">The pattern I keep building is <em>AI features that know their place</em>: assistants that are optional, advisory-only, grounded strictly in recorded evidence, schema-validated, and rejected if they cite things that do not exist. The platform must work with every one of them switched off.</p>
+          </div>
+          <aside class="vision-side" data-reveal>
+            <div class="vs-label mono">CURRENT INSTRUMENTS</div>
+            <ul class="mono vs-list">
+              <li><span>CLASSICAL CV</span><span>OpenCV · templates · geometry</span></li>
+              <li><span>ANOMALY ML</span><span>Isolation Forest · z-score · EWMA</span></li>
+              <li><span>TRACKING</span><span>IoU / SORT-family · stable IDs</span></li>
+              <li><span>LOCAL LLM</span><span>Ollama-compatible · evidence-grounded</span></li>
+              <li><span>EDGE INFERENCE</span><span>ONNX-ready detector slot</span></li>
+            </ul>
+            <div class="vs-label mono" style="margin-top:2rem">NEXT SURVEYS</div>
+            <ul class="vs-next">
+              <li>Real-time and deterministic systems — scheduling, latency, embedded targets</li>
+              <li>Automotive networks — CAN tooling that grew out of ECU work</li>
+              <li>Edge inference on constrained hardware</li>
+            </ul>
+            <p class="mono vs-note">NO PUBLISHED RESEARCH CLAIMED — PROJECTS AND CODE ONLY</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STATION 05 · STACK ================= -->
+    <section class="station stack" id="stack" aria-labelledby="stack-title">
+      <div class="ghost-no" aria-hidden="true">05</div>
+      <div class="container">
+        <header class="station-head" data-reveal>
+          <div class="station-meta mono">
+            <span class="station-no">STATION 05</span>
+            <span class="station-rule" aria-hidden="true"></span>
+            <span class="station-label">CAPABILITY CHART</span>
+            <span class="station-side">EVIDENCE-INDEXED</span>
+          </div>
+          <h2 class="station-title" id="stack-title">
+            <span class="line"><span class="line-in">Every entry</span></span>
+            <span class="line"><span class="line-in">points at proof.</span></span>
+          </h2>
+          <p class="station-sub">No percentage bars, no self-scores. Each row lists the repositories
+          where the capability is actually implemented and inspectable.</p>
+        </header>
+
+        <div class="table-scroll" data-reveal>
+          <table class="spec-table">
+            <caption class="mono">TABLE 05-A — CAPABILITY CHART</caption>
+            <thead>
+              <tr class="mono"><th scope="col">GROUP</th><th scope="col">CAPABILITIES</th><th scope="col">EVIDENCE</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Languages</th>
+                <td>Python · TypeScript · Go · C++20 / C · Java · Kotlin · Dart · SQL · VHDL</td>
+                <td>SPERLUS · StreamGuard · TaskMesh · ByteVault · MICRORT-LAB</td>
+              </tr>
+              <tr>
+                <th scope="row">Backend &amp; data</th>
+                <td>FastAPI · Spring Boot · Go services · SQLAlchemy 2 · Alembic · PostgreSQL · SQLite · REST · WebSocket · SSE · JWT · Argon2id</td>
+                <td>SPERLUS · TaskMesh · StreamGuard · MeshSync</td>
+              </tr>
+              <tr>
+                <th scope="row">Frontend</th>
+                <td>Next.js 16 · React 19 · Tailwind · shadcn/ui · TanStack Query · Prisma · RTL / i18n · recharts</td>
+                <td>SPERLUS · TaskMesh · DeviceHub · EdgeVision</td>
+              </tr>
+              <tr>
+                <th scope="row">Desktop &amp; field</th>
+                <td>PySide6 / Qt · packaging &amp; distribution · verified self-update · offline sync queues · license guarding</td>
+                <td>SPERLUS — VideoMetry 15.14</td>
+              </tr>
+              <tr>
+                <th scope="row">AI &amp; vision</th>
+                <td>OpenCV · scikit-learn · IoU / SORT tracking · anomaly baselines · local LLMs with evidence-grounding</td>
+                <td>EdgeVision · StreamGuard · DeviceHub · CodeBench</td>
+              </tr>
+              <tr>
+                <th scope="row">Infrastructure</th>
+                <td>Docker · Docker Compose · GitHub Actions CI · Caddy · VPS production ops · backups · systemd</td>
+                <td>All public repositories · SPERLUS deployment</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STATION 06 · RECORDS ================= -->
+    <section class="station records" id="records" aria-labelledby="records-title">
+      <div class="ghost-no" aria-hidden="true">06</div>
+      <div class="container">
+        <header class="station-head" data-reveal>
+          <div class="station-meta mono">
+            <span class="station-no">STATION 06</span>
+            <span class="station-rule" aria-hidden="true"></span>
+            <span class="station-label">SITE RECORDS</span>
+            <span class="station-side">HISTORY</span>
+          </div>
+          <h2 class="station-title" id="records-title">
+            <span class="line"><span class="line-in">The log so far.</span></span>
+          </h2>
+          <p class="station-sub">Repository records, stated as they are — no invented dates or titles.
+          Where a period cannot be verified, it is simply not claimed.</p>
+        </header>
+
+        <ol class="rec-list">
+          <li class="rec" data-reveal>
+            <span class="mono rec-id">REC-01 · ACTIVE</span>
+            <div class="rec-body">
+              <h3>SPERLUS — industrial inspection platform</h3>
+              <p class="mono rec-role">DESIGN &amp; FULL-STACK DEVELOPMENT — DESKTOP · WEB · BACKEND</p>
+              <p>Sole developer of the platform described in Station 02: delivered to a real client, deployed on production infrastructure, iterating through client-driven releases — desktop versions from 6.8 up to 15.14, service releases through 1.3.6, with every package still served for verified auto-update.</p>
+            </div>
+          </li>
+          <li class="rec" data-reveal>
+            <span class="mono rec-id">REC-02 · BACKGROUND</span>
+            <div class="rec-body">
+              <h3>Automotive electrical systems &amp; ECU programming</h3>
+              <p class="mono rec-role">HANDS-ON TECHNICAL BACKGROUND — PRECEDING SOFTWARE WORK</p>
+              <p>Practical work on vehicle electrical systems and ECU programming — the origin of a lasting interest in low-level, deterministic, fail-safe software, and the reason a CAN-bus laboratory and an RTOS scheduling simulator exist in this portfolio.</p>
+            </div>
+          </li>
+          <li class="rec" data-reveal>
+            <span class="mono rec-id">REC-03 · PUBLIC</span>
+            <div class="rec-body">
+              <h3>Open systems portfolio</h3>
+              <p class="mono rec-role">EIGHT DOCUMENTED PLATFORMS — GITHUB.COM/PARSAFATHII</p>
+              <p>A concentrated series of platforms — distributed job processing, security analytics, IoT, P2P sync, encrypted storage, RTOS simulation, video analytics, benchmarking — each shipped with CI pipelines, bilingual documentation, real screenshots and an explicit limitations section.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="github-panel" data-reveal>
+          <div class="gh-text">
+            <h3>The repositories are the résumé</h3>
+            <p>Every public project opens with what it really does, how to run it, and what it does <em>not</em> do. No vanity metrics are quoted anywhere on this site — stars and follower counts say nothing about engineering. Read the code, the tests and the docs; that is the point.</p>
+          </div>
+          <a class="btn btn-primary magnetic" href="https://github.com/ParsaFathii" target="_blank" rel="noopener noreferrer">Open the GitHub profile
+            <svg width="13" height="13" viewBox="0 0 13 13" aria-hidden="true"><path d="M3 10 10 3M4 3h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STATION 07 · CONTACT ================= -->
+    <section class="station contact" id="contact" aria-labelledby="contact-title">
+      <div class="ghost-no" aria-hidden="true">07</div>
+      <div class="container">
+        <header class="station-head" data-reveal>
+          <div class="station-meta mono">
+            <span class="station-no">STATION 07</span>
+            <span class="station-rule" aria-hidden="true"></span>
+            <span class="station-label">TRANSMIT</span>
+            <span class="station-side">CONTACT</span>
+          </div>
+          <h2 class="station-title contact-title" id="contact-title">
+            <span class="line"><span class="line-in">Start a new</span></span>
+            <span class="line"><span class="line-in">survey<b class="tick">.</b></span></span>
+          </h2>
+          <p class="station-sub">Open to conversations about engineering roles, ambitious products
+          and technically hard problems — remote or on-site.</p>
+        </header>
+
+        <div class="contact-grid">
+          <a class="channel" href="https://github.com/ParsaFathii" target="_blank" rel="noopener noreferrer" data-reveal>
+            <span class="mono ch-label">CHANNEL 01 — CODE</span>
+            <span class="ch-name">GitHub</span>
+            <span class="mono ch-handle">github.com/ParsaFathii</span>
+            <svg width="16" height="16" viewBox="0 0 13 13" aria-hidden="true"><path d="M3 10 10 3M4 3h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+          </a>
+          <a class="channel" href="https://www.linkedin.com/in/parsafathi" target="_blank" rel="noopener noreferrer" data-reveal>
+            <span class="mono ch-label">CHANNEL 02 — PROFESSIONAL</span>
+            <span class="ch-name">LinkedIn</span>
+            <span class="mono ch-handle">linkedin.com/in/parsafathi</span>
+            <svg width="16" height="16" viewBox="0 0 13 13" aria-hidden="true"><path d="M3 10 10 3M4 3h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+          </a>
+        </div>
+        <p class="mono contact-note" data-reveal>FASTEST RESPONSE — LINKEDIN · DETAILED DISCUSSIONS — GITHUB ISSUES ON ANY PUBLIC REPOSITORY</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="container foot-grid">
+      <div class="foot-brand">
+        <p class="mono">P·FATHI — FIELD SURVEY</p>
+        <p class="mono foot-dim">PORTFOLIO OF PARSA FATHI · SOFTWARE DEVELOPER</p>
+      </div>
+      <ul class="foot-col mono">
+        <li class="foot-h">SURVEY INDEX</li>
+        <li><a href="#about">01 · Operator</a></li>
+        <li><a href="#sperlus">02 · Sperlus</a></li>
+        <li><a href="#systems">03 · Systems</a></li>
+        <li><a href="#vision">04 · Vision</a></li>
+      </ul>
+      <ul class="foot-col mono">
+        <li class="foot-h">&nbsp;</li>
+        <li><a href="#stack">05 · Stack</a></li>
+        <li><a href="#records">06 · Records</a></li>
+        <li><a href="#contact">07 · Transmit</a></li>
+        <li><a href="#top">00 · Top</a></li>
+      </ul>
+      <div class="foot-col mono">
+        <p class="foot-h">COLOPHON</p>
+        <p class="foot-dim">TYPE — ARCHIVO + IBM PLEX MONO</p>
+        <p class="foot-dim">BUILT — VANILLA HTML · CSS · JS</p>
+        <p class="foot-dim">NO FRAMEWORKS · NO TRACKERS</p>
+        <p class="foot-dim">© 2026 · REV 2026.11</p>
+      </div>
+    </div>
+    <div class="container foot-rule mono">
+      <span>SURVEY COMPLETE — THANK YOU FOR WALKING THE LINE</span>
+      <a href="#top" class="to-top">RETURN TO STATION 00
+        <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 13V3M2.5 6.5 7 2l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
