@@ -1,8 +1,9 @@
 /* ============================================================
-   PARSA FATHI — FIELD SURVEY PORTFOLIO · MK II "SPECTRUM"
-   Design system: cartographic field report, five-band survey
-   spectrum (green · cyan · violet · magenta · amber), Archivo
-   (variable) + IBM Plex Mono. Vanilla CSS, no build.
+   PARSA FATHI — FIELD SURVEY PORTFOLIO · MK III "PRISM"
+   Design system: cartographic field report, eight-band survey
+   spectrum (green · teal · cyan · cobalt · violet · magenta ·
+   coral · amber), Archivo (variable) + IBM Plex Mono.
+   Vanilla CSS, no build.
    ============================================================ */
 
 /* ---------- Fonts (self-hosted) ---------- */
@@ -38,24 +39,31 @@
   --line: rgba(22, 25, 26, .15);
   --line-strong: rgba(22, 25, 26, .42);
 
-  /* survey spectrum */
+  /* survey spectrum — MK III "PRISM": eight bands */
   --c-green: #0E7A52;
   --c-green-deep: #0A5C3F;
+  --c-teal: #0F8F76;
+  --c-teal-deep: #0B6E5C;
   --c-cyan: #0B8FA8;
   --c-cyan-deep: #087187;
+  --c-blue: #2B5BD7;
+  --c-blue-deep: #1F42A8;
   --c-violet: #6C4FD8;
   --c-violet-deep: #533CA8;
   --c-magenta: #C2236B;
   --c-magenta-deep: #971A52;
+  --c-coral: #E0523C;
+  --c-coral-deep: #B23E2C;
   --c-amber: #C77414;
   --c-amber-deep: #9C5B0E;
   --c-orange: #D9622B;
   --c-orange-deep: #AE4E20;
 
   --spectrum: linear-gradient(90deg,
-    var(--c-green), var(--c-cyan), var(--c-violet), var(--c-magenta), var(--c-amber));
+    var(--c-green), var(--c-teal), var(--c-cyan), var(--c-blue), var(--c-violet),
+    var(--c-magenta), var(--c-coral), var(--c-amber));
   --spectrum-soft: linear-gradient(90deg,
-    #0E7A52, #0B8FA8, #6C4FD8, #C2236B, #C77414);
+    #0E7A52, #0F8F76, #0B8FA8, #2B5BD7, #6C4FD8, #C2236B, #E0523C, #C77414);
 
   /* station accent — rotated per station below */
   --acc: var(--c-green);
@@ -98,12 +106,7 @@ body[data-station="05"] { --nav-acc: var(--c-amber); }
 body[data-station="06"] { --nav-acc: var(--c-violet); }
 body[data-station="07"] { --nav-acc: var(--c-orange); }
 
-/* ambient light hue follows the active station */
-body[data-station="03"] { --hue: 120deg; }
-body[data-station="04"] { --hue: 245deg; }
-body[data-station="05"] { --hue: 300deg; }
-body[data-station="06"] { --hue: 190deg; }
-body[data-station="07"] { --hue: 330deg; }
+/* ambient light hue — driven continuously by scroll (MK III prism sweep) */
 
 /* ---------- Reset & base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -182,9 +185,11 @@ body::before {
     radial-gradient(42% 34% at 16% 10%, rgba(14, 122, 82, .11), transparent 70%),
     radial-gradient(40% 32% at 86% 80%, rgba(199, 116, 20, .10), transparent 70%),
     radial-gradient(32% 28% at 72% 22%, rgba(11, 143, 168, .09), transparent 70%),
-    radial-gradient(26% 22% at 24% 82%, rgba(108, 79, 216, .07), transparent 70%);
-  filter: hue-rotate(var(--hue, 0deg)) saturate(1.15);
-  transition: filter 1.4s var(--ease-io);
+    radial-gradient(26% 22% at 24% 82%, rgba(108, 79, 216, .07), transparent 70%),
+    radial-gradient(30% 24% at 55% 45%, rgba(43, 91, 215, .05), transparent 70%),
+    radial-gradient(24% 20% at 8% 55%, rgba(15, 143, 118, .07), transparent 70%);
+  filter: hue-rotate(var(--hue, 0deg)) saturate(1.18);
+  transition: filter .9s linear;
 }
 
 /* ---------- Buttons ---------- */
@@ -477,9 +482,10 @@ body::before {
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .hero-title .line-in {
     background: linear-gradient(100deg,
-      #16191A 0%, #16191A 14%,
-      #0E7A52 24%, #0B8FA8 36%, #6C4FD8 48%, #C2236B 60%, #C77414 72%,
-      #16191A 86%, #16191A 100%);
+      #16191A 0%, #16191A 12%,
+      #0E7A52 20%, #0F8F76 26%, #0B8FA8 32%, #2B5BD7 39%, #6C4FD8 46%,
+      #C2236B 53%, #E0523C 60%, #C77414 67%,
+      #16191A 82%, #16191A 100%);
     background-size: 220% 100%;
     background-position: 50% 0;
     -webkit-background-clip: text; background-clip: text;
@@ -822,7 +828,7 @@ body::before {
   display: block;
   font-size: clamp(1.9rem, 3.4vw, 2.9rem); font-weight: 500;
   letter-spacing: .02em; font-variant-numeric: tabular-nums;
-  background: linear-gradient(100deg, #57D9A0, #4BB8D4, #B49BF2, #F2B8C6, #E0A93E);
+  background: linear-gradient(100deg, #57D9A0, #4BD9C8, #4BB8D4, #7C8CF0, #B49BF2, #F2B8C6, #FFB86B, #E0A93E);
   background-size: 200% 100%;
   -webkit-background-clip: text; background-clip: text; color: transparent;
   animation: ghostdrift 10s linear infinite alternate;
@@ -1006,7 +1012,7 @@ body::before {
 }
 .marquee-row { overflow: hidden; padding: .8rem 0; }
 .marquee-row + .marquee-row { border-top: 1px solid rgba(243, 240, 231, .14); }
-.marquee-track { display: flex; width: max-content; animation: marquee 46s linear infinite; }
+.marquee-track { display: flex; width: max-content; animation: marquee 46s linear infinite, mqhue 19s linear infinite; }
 .marquee-rev .marquee-track { animation-direction: reverse; animation-duration: 38s; }
 .marquee-track span {
   white-space: nowrap; color: rgba(243, 240, 231, .5); font-size: .72rem; letter-spacing: .18em;
@@ -1019,6 +1025,7 @@ body::before {
 .m4 { color: #F2B8C6; }
 .m5 { color: #E0A93E; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes mqhue { to { filter: hue-rotate(360deg); } }
 
 /* ---------- Station 04 · Vision ---------- */
 .vision-grid {
@@ -1307,4 +1314,296 @@ body::before {
   .sperlus { background: #fff; color: #000; }
   .js [data-reveal] { opacity: 1; transform: none; }
   a { text-decoration: underline; }
+}
+
+/* ============================================================
+   MK III · "PRISM" — UPGRADE LAYER (REV 2026.11)
+   Eight-band spectrum · hero mesh orbs · prism dividers ·
+   station rail nav · 3D tilt + glare · odometer stats ·
+   conic focus frames · chip pop · marquee hue-cycle ·
+   chromatic hover · cursor trail · bursts & ripples ·
+   scroll-driven ambient prism sweep.
+   Progressive enhancement only — reduced motion and print
+   switch all of it off cleanly.
+   ============================================================ */
+
+/* ---------- Hero mesh orbs ---------- */
+.hero-orbs { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.hero-orbs span {
+  position: absolute; border-radius: 50%;
+  filter: blur(72px); opacity: .17; mix-blend-mode: multiply;
+  will-change: transform;
+}
+.hero-orbs span:nth-child(1) {
+  width: 42vw; height: 42vw; left: -10vw; top: -14vw;
+  background: radial-gradient(circle, #0F8F76 0%, transparent 62%);
+  animation: orb-a 27s ease-in-out infinite alternate;
+}
+.hero-orbs span:nth-child(2) {
+  width: 34vw; height: 34vw; right: -8vw; top: -6vw;
+  background: radial-gradient(circle, #0B8FA8 0%, transparent 62%);
+  animation: orb-b 33s ease-in-out infinite alternate;
+}
+.hero-orbs span:nth-child(3) {
+  width: 38vw; height: 38vw; left: 24vw; bottom: -18vw;
+  background: radial-gradient(circle, #6C4FD8 0%, transparent 62%);
+  opacity: .14;
+  animation: orb-c 39s ease-in-out infinite alternate;
+}
+.hero-orbs span:nth-child(4) {
+  width: 26vw; height: 26vw; right: 16vw; bottom: -6vw;
+  background: radial-gradient(circle, #C2236B 0%, transparent 62%);
+  opacity: .12;
+  animation: orb-d 31s ease-in-out infinite alternate;
+}
+@keyframes orb-a { from { transform: translate(0,0) scale(1); } to { transform: translate(10vw,7vw) scale(1.22); } }
+@keyframes orb-b { from { transform: translate(0,0) scale(1.08); } to { transform: translate(-9vw,10vw) scale(.9); } }
+@keyframes orb-c { from { transform: translate(0,0) scale(.92); } to { transform: translate(9vw,-11vw) scale(1.18); } }
+@keyframes orb-d { from { transform: translate(0,0) scale(1.05); } to { transform: translate(-8vw,-6vw) scale(1.25); } }
+@supports not (filter: blur(72px)) { .hero-orbs span { filter: none; opacity: .07; } }
+
+/* ---------- Prism dividers ---------- */
+.prism-divider { position: relative; height: 7px; overflow: hidden; }
+.prism-divider::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 2px; bottom: 2px;
+  background: var(--spectrum);
+  background-size: 200% 100%;
+  animation: prismflow 11s linear infinite alternate;
+}
+.prism-divider::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 16%; left: -20%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .95), transparent);
+  animation: prismcomet 5.2s var(--ease-io) infinite;
+}
+@keyframes prismflow { from { background-position: 0% 0; } to { background-position: 100% 0; } }
+@keyframes prismcomet {
+  0% { left: -20%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { left: 112%; opacity: 0; }
+}
+
+/* ---------- Station rail nav ---------- */
+.rail-nav {
+  position: fixed; right: 16px; top: 50%; translate: 0 -50%;
+  z-index: 65; display: flex; flex-direction: column; gap: 15px;
+}
+.rail-nav a {
+  position: relative; display: block; width: 9px; height: 9px;
+  border-radius: 50%; background: var(--line-strong);
+  transition: transform .35s var(--ease), background .35s, box-shadow .35s;
+}
+.rail-nav a:hover { transform: scale(1.65); }
+.rail-nav a.active {
+  background: var(--dot-acc, var(--c-green));
+  transform: scale(1.5);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--dot-acc, var(--c-green)) 20%, transparent);
+}
+.rail-nav a.active::before {
+  content: ''; position: absolute; inset: -5px; border-radius: 50%;
+  border: 1.5px solid var(--dot-acc, var(--c-green));
+  animation: dotpulse 2.4s ease-out infinite;
+}
+@keyframes dotpulse { 0% { transform: scale(.55); opacity: 1; } 100% { transform: scale(2.2); opacity: 0; } }
+.rail-nav a::after {
+  content: attr(data-label);
+  position: absolute; right: 22px; top: 50%; translate: 0 -50%;
+  font-family: var(--font-m); font-size: .58rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line-strong); padding: .32rem .55rem;
+  white-space: nowrap; opacity: 0; pointer-events: none;
+  transition: opacity .25s, translate .25s var(--ease);
+}
+.rail-nav a:hover::after { opacity: 1; translate: 3px -50%; }
+
+/* ---------- 3D tilt + glare ----------
+   Applied by JS (class .tilt + injected glare span). Specificity
+   is stacked above the reveal/stagger rules so tilt wins once a
+   card is in view, while entrance animations still play first. */
+.js .principles.in-view > .principle,
+.js .sperlus-cols.in-view > .sp-card,
+.js .channel.tilt.in-view,
+.js .github-panel.tilt.in-view {
+  transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition:
+    opacity .7s var(--ease) calc(var(--stagger, 0) * 1ms),
+    transform var(--tilt-dur, .55s) var(--ease) calc(var(--stagger, 0) * 1ms),
+    border-color .35s, background-color .35s, color .35s;
+}
+.js .feature-media.tilt {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform var(--tilt-dur, .55s) var(--ease);
+}
+/* real depth for the floating sub-screenshot */
+.feature, .feature-flip { perspective: 1300px; }
+.js .feature-media.tilt .shot-sub { transform: translateZ(42px); }
+.tilt-glare {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: radial-gradient(340px circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(255, 255, 255, .32), transparent 62%);
+  opacity: 0; transition: opacity .35s;
+}
+.tilt.moving .tilt-glare, .tilt:hover .tilt-glare { opacity: 1; }
+.sp-card .tilt-glare {
+  background: radial-gradient(300px circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(180, 155, 242, .14), transparent 62%);
+}
+.feature-media .tilt-glare {
+  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(11, 143, 168, .13), transparent 60%);
+}
+
+/* ---------- Odometer stats ---------- */
+.stat-n { line-height: 1.15; }
+.stat { --stat-c: #57D9A0; }
+.stat:nth-child(2) { --stat-c: #4BB8D4; }
+.stat:nth-child(3) { --stat-c: #7C8CF0; }
+.stat:nth-child(4) { --stat-c: #F2B8C6; }
+.stat:nth-child(5) { --stat-c: #FFB86B; }
+.stat-n.odo-on {
+  background: none; color: var(--stat-c);
+  -webkit-background-clip: initial; background-clip: initial;
+  text-shadow: 0 0 24px color-mix(in srgb, var(--stat-c) 40%, transparent);
+  animation: statbreath 5s ease-in-out infinite alternate;
+}
+@keyframes statbreath { to { filter: hue-rotate(26deg); } }
+.odo { display: inline-flex; align-items: flex-start; line-height: 1; }
+.odo-col { display: inline-block; width: 1ch; height: 1em; overflow: hidden; }
+.odo-strip {
+  display: flex; flex-direction: column; will-change: transform;
+  transform: translateY(0);
+  transition: transform 1.05s cubic-bezier(.25, .9, .2, 1.08);
+}
+.odo i {
+  display: block; width: 1ch; height: 1em; line-height: 1em;
+  text-align: center; font-style: normal;
+}
+.odo-dot, .odo-suf { display: inline-block; height: 1em; line-height: 1em; font-weight: 500; }
+/* scanning line while hovering a stat cell */
+.stat::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--stat-c, #34C98A), transparent);
+  opacity: 0; translate: -100% 0; transition: opacity .3s;
+}
+.stat:hover::before { opacity: .85; animation: statline 1.6s linear infinite; }
+@keyframes statline { from { translate: -100% 0; } to { translate: 100% 0; } }
+
+/* ---------- Conic focus frames ---------- */
+@property --spin { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+.channel::after, .sp-card::after, .github-panel::after {
+  content: ''; position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  padding: 1.5px;
+  background: conic-gradient(from var(--spin, 0deg),
+    var(--c-green), var(--c-teal), var(--c-cyan), var(--c-blue), var(--c-violet),
+    var(--c-magenta), var(--c-coral), var(--c-amber), var(--c-green));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0; transition: opacity .5s;
+}
+.sperlus .sp-card::after {
+  background: conic-gradient(from var(--spin, 0deg),
+    #57D9A0, #4BD9C8, #4BB8D4, #7C8CF0, #B49BF2, #F2B8C6, #FFB86B, #57D9A0);
+}
+.channel:hover::after, .sp-card:hover::after, .github-panel:hover::after {
+  opacity: 1; animation: prismspin 5s linear infinite;
+}
+@keyframes prismspin { to { --spin: 360deg; } }
+
+/* ---------- Button shine sweep ---------- */
+.btn::after {
+  content: ''; position: absolute; top: -25%; bottom: -25%; width: 34%;
+  left: -55%; transform: skewX(-20deg); pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .38), transparent);
+  transition: left .55s var(--ease);
+}
+.btn:hover::after { left: 122%; }
+
+/* ---------- Chip pop ---------- */
+.chips, .stack-tags { perspective: 640px; }
+.chips li, .stack-tags li {
+  transition: border-color .25s, color .25s, translate .25s var(--ease),
+    transform .3s var(--ease), box-shadow .3s;
+}
+.chips li:hover, .stack-tags li:hover {
+  transform: translateY(-3px) rotateX(15deg) scale(1.05);
+  box-shadow: 0 10px 22px -10px currentColor;
+}
+
+/* ---------- Marquee kinetic skew ---------- */
+.marquee { transform: skewY(var(--mq-skew, 0deg)); will-change: transform; }
+
+/* ---------- Chromatic hover ---------- */
+@media (hover: hover) and (pointer: fine) {
+  .station-title .line-in, .feature-body h3, .rec-body h3 { transition: text-shadow .25s; }
+  .station-title:hover .line-in {
+    animation: chroma .42s var(--ease);
+    text-shadow: 3px 0 rgba(204, 32, 90, .32), -3px 0 rgba(20, 140, 220, .32),
+      0 0 26px rgba(108, 79, 216, .22);
+  }
+  .feature-body:hover h3, .rec:hover .rec-body h3 {
+    animation: chroma .42s var(--ease);
+    text-shadow: 2px 0 rgba(204, 32, 90, .22), -2px 0 rgba(20, 140, 220, .22);
+  }
+  .hero-title:hover .line-in { text-shadow: 0 0 34px rgba(108, 79, 216, .30); }
+}
+@keyframes chroma {
+  0% { translate: 0 0; }
+  30% { translate: 2px -1px; }
+  60% { translate: -2px 1px; }
+  100% { translate: 0 0; }
+}
+
+/* ---------- Records node ping ---------- */
+.rec.in-view::before { animation: recping 1s var(--ease) .3s 1; }
+@keyframes recping {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--acc) 55%, transparent); }
+  100% { box-shadow: 0 0 0 20px transparent; }
+}
+
+/* ---------- Cursor trail / bursts / ripples ---------- */
+.cursor-trail { position: fixed; inset: 0; z-index: 59; pointer-events: none; }
+.burst-p {
+  position: fixed; z-index: 2010; pointer-events: none;
+  width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px;
+  background: var(--bp-c, var(--c-green));
+  animation: burstfly .75s var(--ease) forwards;
+  will-change: transform, opacity;
+}
+@keyframes burstfly {
+  from { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+  to { transform: translate(var(--dx), var(--dy)) rotate(var(--rot)) scale(.1); opacity: 0; }
+}
+.ripple {
+  position: fixed; z-index: 2005; pointer-events: none;
+  width: 14px; height: 14px; margin: -7px 0 0 -7px;
+  border: 2px solid var(--bp-c, var(--c-cyan)); border-radius: 50%;
+  animation: ripplegrow .6s var(--ease) forwards;
+}
+@keyframes ripplegrow { from { transform: scale(.4); opacity: .9; } to { transform: scale(3.4); opacity: 0; } }
+
+/* ---------- MK III responsive ---------- */
+@media (max-width: 1100px) { .rail-nav { display: none; } }
+@media (max-width: 700px) {
+  .hero-orbs span:nth-child(n+3) { display: none; }
+  .hero-orbs span { filter: blur(48px); }
+  .prism-divider { height: 5px; }
+}
+
+/* ---------- MK III reduced-motion & print ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-trail, .burst-p, .ripple { display: none !important; }
+  .stat-n.odo-on { animation: none; }
+  .marquee { transform: none; }
+}
+@media print {
+  .rail-nav, .hero-orbs, .prism-divider, .tilt-glare, .cursor-trail,
+  .burst-p, .ripple { display: none !important; }
+  .tilt, .js .feature-media.tilt, .js .principles.in-view > .principle,
+  .js .sperlus-cols.in-view > .sp-card, .js .channel.tilt.in-view,
+  .js .github-panel.tilt.in-view { transform: none; }
+  .marquee { transform: none; }
 }
