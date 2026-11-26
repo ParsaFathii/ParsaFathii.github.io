@@ -7,7 +7,7 @@
   <meta name="description" content="Portfolio of Parsa Fathi — software developer building systems that run in the real world: SPERLUS, an industrial pipeline-inspection platform in production use, plus distributed backends and computer-vision pipelines. Python · TypeScript · Go · C++.">
   <meta name="author" content="Parsa Fathi">
   <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#F3F0E7">
+  <meta name="theme-color" content="#F4F1E8">
   <link rel="canonical" href="https://parsafathii.github.io/">
 
   <!-- Open Graph -->
@@ -56,7 +56,7 @@
   }
   </script>
 </head>
-<body>
+<body data-station="00">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Intro overlay (only when JS is available) -->
@@ -71,6 +71,7 @@
   <!-- Crosshair survey cursor (desktop, fine pointers only) -->
   <div class="crosshair" aria-hidden="true">
     <span class="ch-x"></span><span class="ch-y"></span>
+    <span class="ch-dot"></span>
     <span class="ch-read mono" id="chRead">E 0000 · N 0000</span>
   </div>
 
@@ -121,6 +122,14 @@
     <!-- ================= STATION 00 · HERO ================= -->
     <section class="hero" id="top" aria-label="Introduction">
       <svg class="hero-net" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#0E7A52"/>
+            <stop offset=".35" stop-color="#0B8FA8"/>
+            <stop offset=".65" stop-color="#6C4FD8"/>
+            <stop offset="1" stop-color="#C2236B"/>
+          </linearGradient>
+        </defs>
         <g class="net-lines">
           <path pathLength="1" d="M-20 560 H320 L430 450 H700 L810 560 H1150 L1260 450 H1460" />
           <path pathLength="1" d="M180 760 V560" />
@@ -143,16 +152,18 @@
         </g>
       </svg>
 
+      <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+
       <div class="container hero-inner">
         <div class="hero-meta mono" data-reveal>
           <span>FIELD SURVEY — PORTFOLIO</span>
           <span class="hm-mid">MASHHAD · IRAN</span>
-          <span>REV 2026.11</span>
+          <span>REV 2026.11 · MK II</span>
         </div>
 
         <h1 class="hero-title">
           <span class="line"><span class="line-in">PARSA</span></span>
-          <span class="line"><span class="line-in">FATHI<b class="tick">.</b></span></span>
+          <span class="line"><span class="line-in">FATHI</span><b class="tick" aria-hidden="true">.</b></span>
         </h1>
 
         <div class="hero-grid">
@@ -203,8 +214,8 @@
         </header>
 
         <div class="about-grid">
-          <div class="about-lede" data-reveal>
-            <p class="big-line">I build software that has to work when it is raining, offline, and three metres underground.</p>
+          <div class="about-lede">
+            <p class="big-line" data-chars>I build software that has to work when it is raining, offline, and three metres underground.</p>
           </div>
           <div class="about-body" data-reveal>
             <p>My main work is <strong>SPERLUS</strong> — a sewer-inspection operations platform I designed and develop end to end: a field desktop program for CCTV pipe inspection, a role-based web control center, and the backend service that keeps them in sync. It is delivered to a real client, deployed on production infrastructure, and has been iterated through dozens of client-driven releases — the desktop software is currently at version 15.14.</p>
@@ -240,6 +251,7 @@
 
     <!-- ================= STATION 02 · SPERLUS ================= -->
     <section class="station sperlus" id="sperlus" aria-labelledby="sperlus-title">
+      <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="ghost-no" aria-hidden="true">02</div>
       <div class="container">
         <header class="station-head" data-reveal>
@@ -269,15 +281,15 @@
             <g class="arch-lines">
               <path pathLength="1" d="M290 215 H390" class="sync"/>
               <path pathLength="1" d="M690 215 H590" class="rest"/>
-              <path pathLength="1" d="M470 315 V380"/>
-              <path pathLength="1" d="M510 315 V380"/>
+              <path pathLength="1" d="M470 315 V380" class="flow-db"/>
+              <path pathLength="1" d="M510 315 V345 H640 V380" class="flow-media"/>
             </g>
             <g class="arch-labels mono">
-              <text x="340" y="185" text-anchor="middle">IDEMPOTENT SYNC</text>
-              <text x="340" y="250" text-anchor="middle">CHUNKED MEDIA</text>
-              <text x="640" y="195" text-anchor="middle">REST · WS</text>
-              <text x="470" y="355" text-anchor="end">SQL · ALEMBIC</text>
-              <text x="512" y="355" text-anchor="start">FS / S3-READY</text>
+              <text x="340" y="183" text-anchor="middle">IDEMPOTENT SYNC</text>
+              <text x="340" y="248" text-anchor="middle">CHUNKED MEDIA</text>
+              <text x="640" y="193" text-anchor="middle">REST · WS</text>
+              <text x="458" y="340" text-anchor="end">SQL · ALEMBIC</text>
+              <text x="524" y="340" text-anchor="start">FS / S3-READY</text>
             </g>
             <g class="arch-boxes">
               <g class="abox">
@@ -321,6 +333,29 @@
             </g>
           </svg>
         </figure>
+
+        <div class="sp-stats" data-reveal>
+          <div class="stat">
+            <span class="stat-n mono" data-count="15.14" data-decimals="2">15.14</span>
+            <span class="stat-l mono">CURRENT DESKTOP VERSION</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n mono">1.3.6</span>
+            <span class="stat-l mono">CURRENT SERVICE RELEASE</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n mono" data-count="45" data-suffix="+">45+</span>
+            <span class="stat-l mono">STANDARD DEFECT CODES</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n mono" data-count="11">11</span>
+            <span class="stat-l mono">BACKEND MODULES</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n mono" data-count="32">32</span>
+            <span class="stat-l mono">FINANCE TEST SCENARIOS</span>
+          </div>
+        </div>
 
         <div class="sperlus-cols">
           <article class="sp-card" data-reveal>
@@ -412,8 +447,8 @@
           running software — nothing is mocked up.</p>
         </header>
 
-        <article class="feature" id="s-01" data-reveal>
-          <div class="feature-media">
+        <article class="feature" id="s-01">
+          <div class="feature-media" data-reveal="media">
             <figure class="shot shot-main">
               <img src="assets/img/streamguard-overview.webp" width="1400" height="788" loading="lazy" decoding="async" alt="StreamGuard console overview: live event stream, detection rules and incident queue fed by real data.">
             </figure>
@@ -422,7 +457,7 @@
             </figure>
             <span class="mono shot-cap">FIG. 03-1 · LIVE CONSOLE — REAL DATA</span>
           </div>
-          <div class="feature-body">
+          <div class="feature-body" data-reveal>
             <div class="feature-no mono">S-01</div>
             <h3>StreamGuard</h3>
             <p class="feature-tag">Real-time event processing &amp; security analytics</p>
@@ -441,8 +476,8 @@
           </div>
         </article>
 
-        <article class="feature feature-flip" id="s-02" data-reveal>
-          <div class="feature-media">
+        <article class="feature feature-flip" id="s-02">
+          <div class="feature-media" data-reveal="media">
             <figure class="shot shot-main">
               <img src="assets/img/taskmesh-operations.webp" width="1400" height="875" loading="lazy" decoding="async" alt="TaskMesh operations dashboard: queue lanes, worker fleet and a live event ticker.">
             </figure>
@@ -451,7 +486,7 @@
             </figure>
             <span class="mono shot-cap">FIG. 03-2 · OPERATIONS — LIVE API DATA</span>
           </div>
-          <div class="feature-body">
+          <div class="feature-body" data-reveal>
             <div class="feature-no mono">S-02</div>
             <h3>TaskMesh</h3>
             <p class="feature-tag">Distributed job processing &amp; worker orchestration</p>
@@ -470,8 +505,8 @@
           </div>
         </article>
 
-        <article class="feature" id="s-03" data-reveal>
-          <div class="feature-media">
+        <article class="feature" id="s-03">
+          <div class="feature-media" data-reveal="media">
             <figure class="shot shot-main">
               <img src="assets/img/bytevault-vault.webp" width="1400" height="875" loading="lazy" decoding="async" alt="ByteVault vault overview: search, categories and one-tap copy, with synthetic demo entries.">
             </figure>
@@ -480,7 +515,7 @@
             </figure>
             <span class="mono shot-cap">FIG. 03-3 · ONE CORE, FOUR CLIENTS</span>
           </div>
-          <div class="feature-body">
+          <div class="feature-body" data-reveal>
             <div class="feature-no mono">S-03</div>
             <h3>ByteVault</h3>
             <p class="feature-tag">Local-first encrypted password &amp; secrets manager</p>
@@ -499,14 +534,14 @@
           </div>
         </article>
 
-        <article class="feature feature-flip" id="s-04" data-reveal>
-          <div class="feature-media">
+        <article class="feature feature-flip" id="s-04">
+          <div class="feature-media" data-reveal="media">
             <figure class="shot shot-main">
               <img src="assets/img/devicehub-overview.webp" width="1400" height="875" loading="lazy" decoding="async" alt="DeviceHub fleet overview: KPIs, live charts and fleet health, fed by clearly-labelled simulator data.">
             </figure>
             <span class="mono shot-cap">FIG. 03-4 · EDGE-TO-CLOUD, FAILURE-INJECTED</span>
           </div>
-          <div class="feature-body">
+          <div class="feature-body" data-reveal>
             <div class="feature-no mono">S-04</div>
             <h3>DeviceHub</h3>
             <p class="feature-tag">IoT device management, edge gateway &amp; telemetry analytics</p>
@@ -584,9 +619,17 @@
 
     <!-- ================= MARQUEE ================= -->
     <div class="marquee" aria-hidden="true">
-      <div class="marquee-track mono">
-        <span>PYTHON · TYPESCRIPT · GO · C++20 · JAVA · KOTLIN · FASTAPI · SPRING BOOT · NEXT.JS 16 · REACT 19 · PY SIDE6 · OPENCV · SCIKIT-LEARN · POSTGRESQL · SQLITE · MQTT · WEBSOCKET · DOCKER · GITHUB ACTIONS ·&nbsp;</span>
-        <span>PYTHON · TYPESCRIPT · GO · C++20 · JAVA · KOTLIN · FASTAPI · SPRING BOOT · NEXT.JS 16 · REACT 19 · PY SIDE6 · OPENCV · SCIKIT-LEARN · POSTGRESQL · SQLITE · MQTT · WEBSOCKET · DOCKER · GITHUB ACTIONS ·&nbsp;</span>
+      <div class="marquee-row">
+        <div class="marquee-track mono" data-mq>
+          <span><b class="m1">PYTHON</b> · <b class="m2">TYPESCRIPT</b> · <b class="m3">GO</b> · <b class="m4">C++20</b> · <b class="m5">JAVA</b> · <b class="m1">KOTLIN</b> · <b class="m2">FASTAPI</b> · <b class="m3">SPRING BOOT</b> · <b class="m4">NEXT.JS 16</b> · <b class="m5">REACT 19</b> · <b class="m1">PYSIDE6</b> · <b class="m2">OPENCV</b> · <b class="m3">SCIKIT-LEARN</b> · <b class="m4">POSTGRESQL</b> · <b class="m5">SQLITE</b> · <b class="m1">MQTT</b> · <b class="m2">WEBSOCKET</b> · <b class="m3">DOCKER</b> · <b class="m4">GITHUB ACTIONS</b> ·&nbsp;</span>
+          <span><b class="m1">PYTHON</b> · <b class="m2">TYPESCRIPT</b> · <b class="m3">GO</b> · <b class="m4">C++20</b> · <b class="m5">JAVA</b> · <b class="m1">KOTLIN</b> · <b class="m2">FASTAPI</b> · <b class="m3">SPRING BOOT</b> · <b class="m4">NEXT.JS 16</b> · <b class="m5">REACT 19</b> · <b class="m1">PYSIDE6</b> · <b class="m2">OPENCV</b> · <b class="m3">SCIKIT-LEARN</b> · <b class="m4">POSTGRESQL</b> · <b class="m5">SQLITE</b> · <b class="m1">MQTT</b> · <b class="m2">WEBSOCKET</b> · <b class="m3">DOCKER</b> · <b class="m4">GITHUB ACTIONS</b> ·&nbsp;</span>
+        </div>
+      </div>
+      <div class="marquee-row marquee-rev">
+        <div class="marquee-track mono" data-mq>
+          <span><b class="m5">SPERLUS</b> ◆ <b class="m4">STREAMGUARD</b> ◆ <b class="m3">TASKMESH</b> ◆ <b class="m2">BYTEVAULT</b> ◆ <b class="m1">DEVICEHUB</b> ◆ <b class="m5">MESHSYNC</b> ◆ <b class="m4">EDGEVISION</b> ◆ <b class="m3">MICRORT-LAB</b> ◆ <b class="m2">CODEBENCH</b> ◆ <b class="m5">SPERLUS</b> ◆ <b class="m4">STREAMGUARD</b> ◆ <b class="m3">TASKMESH</b> ◆ <b class="m2">BYTEVAULT</b> ◆ <b class="m1">DEVICEHUB</b> ◆ <b class="m5">MESHSYNC</b> ◆ <b class="m4">EDGEVISION</b> ◆ <b class="m3">MICRORT-LAB</b> ◆ <b class="m2">CODEBENCH</b> ◆&nbsp;</span>
+          <span><b class="m5">SPERLUS</b> ◆ <b class="m4">STREAMGUARD</b> ◆ <b class="m3">TASKMESH</b> ◆ <b class="m2">BYTEVAULT</b> ◆ <b class="m1">DEVICEHUB</b> ◆ <b class="m5">MESHSYNC</b> ◆ <b class="m4">EDGEVISION</b> ◆ <b class="m3">MICRORT-LAB</b> ◆ <b class="m2">CODEBENCH</b> ◆ <b class="m5">SPERLUS</b> ◆ <b class="m4">STREAMGUARD</b> ◆ <b class="m3">TASKMESH</b> ◆ <b class="m2">BYTEVAULT</b> ◆ <b class="m1">DEVICEHUB</b> ◆ <b class="m5">MESHSYNC</b> ◆ <b class="m4">EDGEVISION</b> ◆ <b class="m3">MICRORT-LAB</b> ◆ <b class="m2">CODEBENCH</b> ◆&nbsp;</span>
+        </div>
       </div>
     </div>
 
@@ -766,7 +809,7 @@
           </div>
           <h2 class="station-title contact-title" id="contact-title">
             <span class="line"><span class="line-in">Start a new</span></span>
-            <span class="line"><span class="line-in">survey<b class="tick">.</b></span></span>
+            <span class="line"><span class="line-in">survey</span><b class="tick" aria-hidden="true">.</b></span>
           </h2>
           <p class="station-sub">Open to conversations about engineering roles, ambitious products
           and technically hard problems — remote or on-site.</p>
@@ -814,9 +857,9 @@
       <div class="foot-col mono">
         <p class="foot-h">COLOPHON</p>
         <p class="foot-dim">TYPE — ARCHIVO + IBM PLEX MONO</p>
-        <p class="foot-dim">BUILT — VANILLA HTML · CSS · JS</p>
+        <p class="foot-dim">BUILT — VANILLA HTML · CSS · JS · CANVAS</p>
         <p class="foot-dim">NO FRAMEWORKS · NO TRACKERS</p>
-        <p class="foot-dim">© 2026 · REV 2026.11</p>
+        <p class="foot-dim">© 2026 · REV 2026.11 · MK II</p>
       </div>
     </div>
     <div class="container foot-rule mono">
